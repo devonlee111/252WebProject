@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
@@ -6,17 +6,18 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     # GET
     def do_GET(self):
-        # send response
+        # send response status code
+        mypath = self.path
         self.send_response(200)
 
         # send headers
         self.send_header('Content-type', 'text/html')
         self.end_headers()
 
-        # send message back to client
-        message = "Hello world!"
-        # write content
-        self.wfile.write(bytes(message, "utf8"))
+        # Open the certain page
+        file = open("MainPage.html", 'rb')
+        # write down the content
+        self.wfile.write(bytes(file.read()))
         return
 
 def run():
@@ -24,7 +25,7 @@ def run():
 
     # server settings
     # choose port 8080
-    server_address = ('127.0.0.1', 8081)
+    server_address = ('0.0.0.0', 28756)
     httpd = HTTPServer(server_address, testHTTPServer_RequestHandler)
     print('running server...')
     httpd.serve_forever()
