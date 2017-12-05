@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
@@ -6,7 +6,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     # GET
     def do_GET(self):
-        # send response
+        # send response status code
+        mypath = self.path
         self.send_response(200)
 
         # send headers
@@ -24,7 +25,7 @@ def run():
 
     # server settings
     # choose port 8080
-    server_address = ('127.0.0.1', 8088)
+    server_address = ('0.0.0.0', 28756)
     httpd = HTTPServer(server_address, testHTTPServer_RequestHandler)
     print('running server...')
     httpd.serve_forever()
