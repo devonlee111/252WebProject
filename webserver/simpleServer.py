@@ -7,18 +7,67 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     # GET
     def do_GET(self):
         # send response status code
-        mypath = self.path
+        myPath = self.path
+        print(myPath)
         self.send_response(200)
-
-        # send headers
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
-
-        # Open the certain page
-        file = open("MainPage.html", 'rb')
-        # write down the content
-        self.wfile.write(bytes(file.read()))
-        return
+        if ( myPath is '/' or myPath is '/MainPage.html' ):
+            # send headers
+            self.send_header('Content-type', 'text/html')
+            self.end_headers()
+            # Open the certain page
+            file = open("files/html/MainPage.html", 'rb')
+            # write down the content
+            self.wfile.write(bytes(file.read()))
+            file.close()
+            return
+        elif ".html" in myPath:
+            if "files/html" not in myPath:
+                newPath = "files/html" + myPath
+            else:
+                newPath = myPath
+            print(newPath)
+            self.send_header('Content-type', 'text/html')
+            self.end_headers()
+            file = open(newPath, 'rb')
+            self.wfile.write(bytes(file.read()))
+            file.close()
+            return
+        elif ".jpg" in myPath or ".jepg" in myPath or \
+            ".gif" in myPath or ".png" in myPath:
+            if ".jpg" in myPath or ".jepg" in myPath:
+                tmp = "jepg"
+            elif ".gif" in myPath:
+                tmp = "gif"
+            else:
+                tmp = "png"
+            content = "images/" + tmp
+            print(content)
+            self.send_header('Content-type', content)
+            self.end_headers()
+            if "files/html" not in myPath:
+                newPath = "files/html" + myPath
+            else:
+                newPath = myPath
+            print(newPath)
+            try:
+                file = open(newPath, 'rb')
+                self.wfile.write(file.read())
+                file.close()
+                return
+            except:
+                FileNotFoundError
+        else:
+            self.send_header('Content-type', "text/plain")
+            self.end_headers()
+            if "files/html" not in myPath:
+                newPath = "files/html" + myPath
+            else:
+                newPath = myPath
+            print(newPath)
+            file = open(newPath, 'rb')
+            self.wfile.write(file.read())
+            file.close()
+            return
 
 def run():
     print('starting server...')
