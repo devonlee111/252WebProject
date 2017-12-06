@@ -3,12 +3,48 @@
 
 <head>
 	<style>
-		body {
-			color: while;
-		}
-		h1 {
-			color: #e8e4e1;
-		}
+	ul {
+		list-style-type: none;
+    		margin: 0;
+    		padding: 0;
+    		overflow: hidden;
+    		background-color: #333;
+		position: fixed;
+		top: 1;
+		width: 100%;
+	}
+	li {
+    		float: left;
+	}
+	li:last-child {
+		border-right: none;
+	}
+	li a {
+    		display: block;
+    		color: white;
+    		text-align: center;
+    		padding: 14px 16px;
+    		text-decoration: none;
+	}
+	li a:hover {
+		background-color: #111;
+	}
+	.active {
+		border-bottom:3px solid #960
+	}
+	body {
+		color: white;
+	}
+	h1 {
+		color: #e8e4e1;
+	}
+	p {
+		color: #FFFFFF;
+	}
+	h2 {
+		color: white;
+		opacity:1;
+	}
 	</style>
 	<meta charset="UTF-8">
 	<title>All you want about PUBG</title>
@@ -16,9 +52,31 @@
 </head>
 
 <body background="assets/background.jpg" link="#e8e4e1" vlink="#e8e4e1"> 
+
 	<h1 align="middle" style="fond-family:Verdana">All you need about PUBG</h1> 
-	<a href="https://pubg.op.gg/">Battle Records at PUBG.OP.GG</a>
-	<br><br><br><img src="assets/cubes2.gif" height="27%" width="27%" align="bottom" style="PADDING-LEFT: 4%">
+	<ul>
+  		<li><a class="active" href="#home">Weapons</a></li>
+  		<li><a href="#Items">Items</a></li>
+  		<li><a href="#Equipments">Equipments</a></li>
+  		<li><a href="#Viechales">Vehicles</a></li>
+		<li style="float:right"><a href="#Login">Login</a></li>
+	</ul>
+	<a href="https://pubg.op.gg/">Check battle record at PUBG.OP.GG</a>
+	<br>
+	<div style="padding:20px;margin-top:30px;background-color:#595959;height:500px;filter:alpha(Opacity=80);opacity:0.8">
+		<h2>Assult Rifle</h2>
+		<p>Some text some text some text some text..</p>
+		<h2>Sniper Rifle</h2>
+		<p>Some text some text some text some text..</p>
+		<h2>Submachine Gun</h2>
+		<p>Some text some text some text some text..</p>
+		<h2>Shotgun</h2>
+		<p>Some text some text some text some text..</p>
+		<h2>Pistol</h2>
+		<p>Some text some text some text some text..</p>
+		<h2>Melee</h2>
+		<p>Some text some text some text some text..</p>
+	</div>
 
 </body>
 
