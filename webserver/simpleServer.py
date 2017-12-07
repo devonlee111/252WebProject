@@ -26,21 +26,6 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 newPath = "files/html" + myPath
             else:
                 newPath = myPath
-            try:
-                print(newPath)
-                self.send_response(200)
-                self.send_header('Content-type', 'text/html')
-                self.end_headers()
-                file = open(newPath, 'rb')
-                self.wfile.write(bytes(file.read()))
-                file.close()
-            except IOError:
-                self.send_response(200)
-                self.send_response(404)
-                self.send_header('Content-type', 'text/html')
-                self.end_headers()
-
-                newPath = myPath 
             #self.send_header('Content-type', 'text/html')
             #self.end_headers()
             try:
