@@ -61,8 +61,8 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             command = (myPath.replace('?', ' ')).replace('&', ' ')
             proc = subprocess.Popen(command, shell=True)
             result = proc.stdout.read()
-            print(result)
-            self.wfile.write(result)
+
+            self.wfile.write(bytes(result))
             return
         else:
             self.send_header('Content-type', "text/plain")
