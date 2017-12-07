@@ -21,12 +21,11 @@
         }
         #createAccountHdr {
        		position:absolute;
-                width:532px;
-                top:20px;
-                margin:auto;
-                right:0;
-                left:0;
-       	}
+		width:10px;
+		top:20px;
+                font-size:24;
+		font-family:'Open Sans', san-serif;
+	}
         h1 {
                 position:absolute;
                 font-size:36;
@@ -166,11 +165,12 @@
 
 
 <body onload="body_onload()">
-        	<div id="createAccountHdr">
-        		<a href="MainPage.html"><img id="gameLogo" src="assets/logo.png" alt="Game Logo"></a>
-        	</div>
+        <div id="gameHdr">
+        	<a href="MainPage.html"><img id="gameLogo" src="assets/logo.png" alt="Game Logo"></a>
+        </div>
+
         <div id="createAccountForm">
-            	<label id="usernameLbl">Username</label>
+		<label id="usernameLbl">Username</label>
             	<input id="usernameInput" type="text">
 	
             	<label id="passwordLbl">Password</label>

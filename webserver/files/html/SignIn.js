@@ -66,7 +66,7 @@ function attemptLogin() {
 
 function checkResponse(response) {
 	if (response === "true") {
-		sessionStorageSet("LoggedIn", null);
+		sessionStorageSet("LoggedIn", true);
 		location.href = "MainPage.html";
 	}
 	if (response === "false") {
