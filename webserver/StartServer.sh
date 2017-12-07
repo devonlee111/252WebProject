@@ -1,3 +1,3 @@
 #~/bin/bash
 pkill python3
-python3 simpleServer.py &
+nohup python3 simpleServer.py &
