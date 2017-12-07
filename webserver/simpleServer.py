@@ -12,6 +12,7 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         if ( myPath is '/' or myPath is '/MainPage.html' ):
             # send headers
+            self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             # Open the certain page
@@ -25,12 +26,22 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 newPath = "files/html" + myPath
             else:
                 newPath = myPath
-            print(newPath)
-            self.send_header('Content-type', 'text/html')
-            self.end_headers()
-            file = open(newPath, 'rb')
-            self.wfile.write(bytes(file.read()))
-            file.close()
+            try:
+                print(newPath)
+                self.send_response(200)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers()
+                file = open(newPath, 'rb')
+                self.wfile.write(bytes(file.read()))
+                file.close()
+            except IOError:
+                self.send_response(200)
+                self.send_response(404)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers()
+                file = open("files/html/404.html", 'rb')
+                self.wfile.write(bytes(file.read()))
+                file.close()
             return
         elif ".jpg" in myPath or ".jepg" in myPath or \
             ".gif" in myPath or ".png" in myPath:
@@ -42,6 +53,7 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 tmp = "png"
             content = "images/" + tmp
             print(content)
+            self.send_response(200)
             self.send_header('Content-type', content)
             self.end_headers()
             if "files/html" not in myPath:
@@ -54,16 +66,14 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             file.close()
             return
         elif ".php" in myPath:
-            myPath = myPath[1:]
+            myPath = myPath[1:i]
             command = (myPath.replace('?', ' ')).replace('&', ' ')
             command = "php " + command
-            print("COMMAND IS " + command);
             proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
             result = proc.stdout.read()
-
-            self.wfile.write(bytes(result))
-            print("RESULT IS ");
-            print(result);
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
             self.wfile.write(result)
 
             return
