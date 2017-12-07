@@ -1,6 +1,5 @@
 <?php
 	//signin.php
-	echo "starting";
 	$_GET = array();
 	foreach($argv as $key => $pair) {
 		if ($key == 0) {
