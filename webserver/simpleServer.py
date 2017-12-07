@@ -57,7 +57,7 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             except:
                 FileNotFoundError
         elif ".php" in myPath:
-            myPath.remove('/')
+            myPath = myPath[1:]
             command = (myPath.replace('?', ' ')).replace('&', ' ')
             proc = subprocess.Popen(command, shell=True)
             result = proc.stdout.read()
