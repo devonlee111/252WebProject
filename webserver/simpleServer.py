@@ -32,23 +32,26 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 file = open(newPath, 'rb')
                 self.send_response(200)
                 self.send_header('Content-type', 'text/html')
-                self.end_headers();
+                self.end_headers()
                 self.wfile.write(bytes(file.read()))
                 file.close()
             except IOError:
                 self.send_response(404)
                 self.send_header('Content-type', 'text/html')
-                self.end_headers();
+                self.end_headers()
                 file = open("files/html/404.html", 'rb')
                 self.wfile.write(bytes(file.read()))
                 file.close()
             return
         elif ".jpg" in myPath or ".jepg" in myPath or \
-            ".gif" in myPath or ".png" in myPath:
+            ".gif" in myPath or ".png" in myPath or \
+            ".svg" in myPath:
             if ".jpg" in myPath or ".jepg" in myPath:
                 tmp = "jepg"
             elif ".gif" in myPath:
                 tmp = "gif"
+            elif ".svg" in myPath:
+                tmp = ".svg"
             else:
                 tmp = "png"
             self.send_response(200)
@@ -68,7 +71,7 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             file.close()
             return
         elif ".php" in myPath:
-            myPath = myPath[1:i]
+            myPath = myPath[1:]
             command = (myPath.replace('?', ' ')).replace('&', ' ')
             command = "php " + command
             proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
