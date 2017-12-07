@@ -19,7 +19,6 @@
                 right:0;
                 left:0;
         }
-
         #createAccountHdr {
        		position:absolute;
                 width:532px;
@@ -111,7 +110,7 @@
         }
         #registerBtn {
                 position:absolute;
-                top:360px;
+                top:380px;
                 left:320px;
                 width:100px;
                 height:40px;
@@ -125,10 +124,22 @@
         }
         #backLink {
                 position:absolute;
-                top:375px;
+                top:390px;
                 left:30px;
                 font-family:'Open Sans', san-serif;
         }
+	#mainLink {
+		position:absolute;
+		top:390px;
+		left:155px;
+		font-family:'Open Sans', san-serif;
+	}
+	#hint {
+		position:relative;
+		top:-30px;
+		left:-260px;
+	}
+
         a:link {
                 color: blue; 
                 background-color: transparent; 
@@ -145,18 +156,19 @@
         </div>
 
         <div id="createAccountForm">
+            	<label id="usernameLbl">Username</label>
+            	<input id="usernameInput" type="text">
+	
+            	<label id="passwordLbl">Password</label>
+            	<input id="passwordInput" type="password">
+	
+            	<label id="confirmPasswordLbl">Confirm Password</label>
+            	<input id="confirmPasswordInput" type="password">
 
-            <label id="usernameLbl">Username</label>
-            <input id="usernameInput" type="text">
-
-            <label id="passwordLbl">Password</label>
-            <input id="passwordInput" type="password">
-
-            <label id="confirmPasswordLbl">Confirm Password</label>
-            <input id="confirmPasswordInput" type="password">
-
-            <button id="registerBtn">Register</button>
-            <label id="backLink"> <a href="SignIn.html"> &lt; Back </a> </label>
+            	<button id="registerBtn">Register</button>
+            	<label id="backLink"> <a href="SignIn.html">Sign in here </a> </label>
+	    	<label id="mainLink"> <a href="MainPage.html">Back to Mainpage</a><label>
+		<label id="hint">Already have an account?</label>
         </div>
     
 </body>
