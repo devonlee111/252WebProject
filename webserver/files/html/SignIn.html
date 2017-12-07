@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+
+
+<head>
+        <title>Sign In to AYN</title>
+        <script language="javascript" type="text/javascript" src="SignIn.js"></script>
+        <script language="javascript" type="text/javascript" src="Shared.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+
+        <style type="text/css">
+            #gameLogo {
+                position:absolute;
+                display: block;
+                max-width:1000px;
+                max-height:180px;
+                width: auto;
+                height: auto;
+                top:20px;
+                margin:auto;
+                right:0;
+                left:0;
+            }
+
+            #signInForm {
+                position:absolute;
+                width:300px;
+                height: 400px;
+                border-style:solid;
+                border-width:1px;
+                margin: auto;
+                top:200px;
+                right:0;
+                left:0;
+            }
+
+            #signInHdr {
+                position:absolute;
+                top:10px;
+                left:20px;
+                font-size:24;
+                font-family:'Open Sans', san-serif;
+            }
+
+            #usernameLbl {
+                position:absolute;
+                top:70px;
+                left:20px;
+                font-family:'Open Sans', san-serif;
+                font-weight:bold;
+            }
+
+            #usernameInput {
+                position:absolute;
+                top:100px;
+                left:20px;
+                width:260px;
+                height:30px;
+                font-size:15;   
+                font-family:'Open Sans', san-serif;
+            }
+
+            #passwordLbl {
+                position:absolute;
+                top:150px;
+                left:20px;
+                font-family:'Open Sans', san-serif;
+                font-weight:bold;
+            }
+
+            #passwordInput {
+                position:absolute;
+                top:180px;
+                left:20px;
+                width:260px;
+                height:30px;
+                font-size:15;   
+                font-family:'Open Sans', san-serif;
+            }
+
+            #rememberLbl {
+                position:absolute;
+                top:245px;
+                left:140px;
+                font-family:'Open Sans', san-serif;
+            }
+
+            #rememberChkBox {
+                position:absolute;
+                top:247px;
+                left:120px;
+                font-family:'Open Sans', san-serif;
+            }
+
+            #createAccountLbl {
+                position:absolute;
+                top:310px;
+                left:75px;
+                font-family:'Open Sans', san-serif;
+                font-size:12;
+            }
+
+            #createAccountBtn {
+                position:absolute;
+                top:330px;
+                left:55px;
+                width:180px;
+                height:30px;
+                background-color:#FFFFFF;
+                border-style:solid;
+                border-width:1px;
+                border-radius:4px;
+                cursor:pointer;
+                font-family:'Open Sans', san-serif;
+                font-size:15;
+            }
+
+            #signInBtn {
+                position:absolute;
+                top:240px;
+                left:20px;
+                width:80px;
+                height:30px;
+                background-color:#FFFFFF;
+                border-style:solid;
+                border-width:1px;
+                border-radius:4px;
+                cursor:pointer;
+                font-family:'Open Sans', san-serif;
+                font-size:12;
+            }
+	</style>
+</head>
+
+
+<body onload="body_onload()">
+        
+        <div id="gameHdr">
+            <img id="gameLogo" src="assets/logo.png" alt="Game Logo">
+        </div>
+
+        <div id="signInForm">
+            <label id="signInHdr">SIGN IN</label>
+            <label id="usernameLbl">Username</label>
+            <input id="usernameInput" type="text">
+            <label id="passwordLbl">Password</label>
+            <input id="passwordInput" type="password">
+            <label id="rememberLbl">Remember Me</label>
+            <input id="rememberChkBox" type="checkbox">
+            <label id="createAccountLbl">New to AYW.com?</label>
+	    <button id="createAccountBtn"><a href="CreateAccount.html">Create Account</button>
+            <button id="signInBtn">Sign In</button>
+	</div>
+
+</body>
+
+
+</html>
