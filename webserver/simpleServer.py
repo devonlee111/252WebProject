@@ -49,13 +49,10 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             else:
                 newPath = myPath
             print(newPath)
-            try:
-                file = open(newPath, 'rb')
-                self.wfile.write(file.read())
-                file.close()
-                return
-            except:
-                FileNotFoundError
+            file = open(newPath, 'rb')
+            self.wfile.write(file.read())
+            file.close()
+            return
         elif ".php" in myPath:
             myPath = myPath[1:]
             command = (myPath.replace('?', ' ')).replace('&', ' ')
