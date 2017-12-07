@@ -5,7 +5,7 @@
 		if ($key == 0) {
 			continue;
 		}
-		list($key, $value) = explode(":", $pair);
+		list($key, $value) = explode("=", $pair);
 		$_GET[$key] = $value;
 	}
 	$return = "false";
@@ -28,7 +28,7 @@
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 			if ($user == $row["name"] && $pass == $row["password"]) {
-				$return = true;
+				$return = "true";
 			}
 		}
 	}
