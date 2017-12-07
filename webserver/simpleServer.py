@@ -2,6 +2,7 @@
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import subprocess
+
 # HTTPRequestHandler class
 class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     # GET
@@ -24,13 +25,17 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             if "files/html" not in myPath:
                 newPath = "files/html" + myPath
             else:
-                newPath = myPath
-            print(newPath)
+                newPath = myPath 
             self.send_header('Content-type', 'text/html')
             self.end_headers()
-            file = open(newPath, 'rb')
-            self.wfile.write(bytes(file.read()))
-            file.close()
+            try:
+                file = open(newPath, 'rb')
+                self.wfile.write(bytes(file.read()))
+                file.close()
+            except IOError:
+                file = open("files/html/404.html", 'rb')
+                self.wfile.write(bytes(file.read()))
+                file.close()
             return
         elif ".jpg" in myPath or ".jepg" in myPath or \
             ".gif" in myPath or ".png" in myPath:
@@ -41,14 +46,12 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             else:
                 tmp = "png"
             content = "images/" + tmp
-            print(content)
             self.send_header('Content-type', content)
             self.end_headers()
             if "files/html" not in myPath:
                 newPath = "files/html" + myPath
             else:
                 newPath = myPath
-            print(newPath)
             file = open(newPath, 'rb')
             self.wfile.write(file.read())
             file.close()
@@ -57,13 +60,10 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             myPath = myPath[1:]
             command = (myPath.replace('?', ' ')).replace('&', ' ')
             command = "php " + command
-            print("COMMAND IS " + command);
             proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
             result = proc.stdout.read()
 
             self.wfile.write(bytes(result))
-            print("RESULT IS ");
-            print(result);
             self.wfile.write(result)
 
             return
@@ -74,7 +74,6 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 newPath = "files/html" + myPath
             else:
                 newPath = myPath
-            print(newPath)
             file = open(newPath, 'rb')
             self.wfile.write(file.read())
             file.close()
