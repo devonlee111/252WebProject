@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
-
+import subprocess
 # HTTPRequestHandler class
 class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     # GET
@@ -56,6 +56,13 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 return
             except:
                 FileNotFoundError
+        elif ".php" in myPath:
+            command = (myPath.replace('?', ' ')).replace('&', ' ')
+            proc = subprocess.Popen(command, shell=True)
+            result = proc.stdout.read()
+            print(result)
+
+            return
         else:
             self.send_header('Content-type', "text/plain")
             self.end_headers()
@@ -69,11 +76,14 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             file.close()
             return
 
+    def do_POST(self):
+        return
+
 def run():
     print('starting server...')
 
     # server settings
-    # choose port 8080
+    # choose port 28756
     server_address = ('0.0.0.0', 28756)
     httpd = HTTPServer(server_address, testHTTPServer_RequestHandler)
     print('running server...')
