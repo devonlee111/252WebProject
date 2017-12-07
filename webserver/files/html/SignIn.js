@@ -4,6 +4,7 @@ var password;
 function body_onload() {
 	sessionStorageSet("CurrentUser",  null);
 	signInBtn.onclick = signInBtn_onclick;
+	createAccountBtn.onclick = createAccountBtn_onclick;
 
 	usernameInput.value = localStorageGet("Username", "");
 
@@ -44,6 +45,10 @@ function signInBtn_onclick() {
 		sessionStorageSet("Password", passwordInput.value);
 		attemptLogin();
 	}
+}
+
+function createAccountBtn_onclick() {
+	location.href = "CreateAccount.html";
 }
 
 function attemptLogin() {

@@ -114,7 +114,7 @@
                 left:320px;
                 width:100px;
                 height:40px;
-                background-color:#FFFFFF;
+                background-color:#AAFFAA;
                 border-style:solid;
                 border-width:1px;
                 border-radius:4px;
@@ -122,22 +122,38 @@
                 font-family:'Open Sans', san-serif;
                 font-size:12;
         }
-        #backLink {
+        #signInBtn {
                 position:absolute;
-                top:390px;
-                left:30px;
-                font-family:'Open Sans', san-serif;
-        }
-	#mainLink {
-		position:absolute;
-		top:390px;
-		left:155px;
+                top:380px;
+                left:15px;
+                width:125px;
+		height:40px;
+		background-color:#FFFFFF;
+		border-style:solid;
+		border-width:1px;
+		border-radius:4px;
+		cursor:pointer;
 		font-family:'Open Sans', san-serif;
+		font-size:12;
+        }
+	#mainPageBtn {
+		position:absolute;
+		top:380px;
+		left:150px;
+		width:125px;
+		height:40px;
+		background-color:#FFFFFF;
+		border-style:solid;
+		border-width:1px;
+		border-radius:4px;
+		cursor:pointer;
+		font-family:'Open Sans', san-serif;
+		font-size:12;
 	}
 	#hint {
 		position:relative;
-		top:-30px;
-		left:-260px;
+		top:360px;
+		left:20px;
 	}
 
         a:link {
@@ -164,8 +180,8 @@
             	<input id="confirmPasswordInput" type="password">
 
             	<button id="registerBtn">Register</button>
-            	<label id="backLink"> <a href="SignIn.html">Sign in here </a> </label>
-	    	<label id="mainLink"> <a href="MainPage.html">Back to Mainpage</a><label>
+            	<button id="signInBtn">Sign In Here</button>
+	    	<button id="mainPageBtn">Back to Mainpage</button>
 		<label id="hint">Already have an account?</label>
         </div>
     
