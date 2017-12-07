@@ -59,9 +59,12 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
         elif ".php" in myPath:
             myPath = myPath[1:]
             command = (myPath.replace('?', ' ')).replace('&', ' ')
-            proc = subprocess.Popen(command, shell=True)
+            command = "php " + command
+            print("COMMAND IS " + command);
+            proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
             result = proc.stdout.read()
-            print(result)
+            print("RESULT IS ");
+            print(result);
             self.wfile.write(result)
             return
         else:

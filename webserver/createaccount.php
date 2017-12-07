@@ -5,7 +5,7 @@
 		if ($key == 0) {
 			continue;
 		}
-		list($key, $value) = explode(":", $pair);
+		list($key, $value) = explode("=", $pair);
 		$_GET[$key] = $value;
 	}
 	$return = "false";
@@ -27,7 +27,8 @@
 
 	if ($result->num_rows == 0) {
 		$return = "true";
-		$sql = "INSERT INTO users (name, password) VALUES('" . $user . "','" . $pass "')";
+		$sql = "INSERT INTO users (name, password) VALUES('" . $user . "','" . $pass . "')";
+		$conn->query($sql);
 	}
 	echo $return;
 	$conn->close();
