@@ -2,14 +2,14 @@
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import subprocess
+
 # HTTPRequestHandler class
 class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     # GET
     def do_GET(self):
         # send response status code
         myPath = self.path
-        print(myPath)
-        self.send_response(200)
+        # self.send_response(200)
         if ( myPath is '/' or myPath is '/MainPage.html' ):
             # send headers
             self.send_response(200)
@@ -39,6 +39,21 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 self.send_response(404)
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
+
+                newPath = myPath 
+            #self.send_header('Content-type', 'text/html')
+            #self.end_headers()
+            try:
+                file = open(newPath, 'rb')
+                self.send_response(200)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers();
+                self.wfile.write(bytes(file.read()))
+                file.close()
+            except IOError:
+                self.send_response(404)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers();
                 file = open("files/html/404.html", 'rb')
                 self.wfile.write(bytes(file.read()))
                 file.close()
@@ -51,16 +66,18 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 tmp = "gif"
             else:
                 tmp = "png"
+            self.send_response(200)
             content = "images/" + tmp
+
             print(content)
             self.send_response(200)
+
             self.send_header('Content-type', content)
             self.end_headers()
             if "files/html" not in myPath:
                 newPath = "files/html" + myPath
             else:
                 newPath = myPath
-            print(newPath)
             file = open(newPath, 'rb')
             self.wfile.write(file.read())
             file.close()
@@ -75,16 +92,15 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(result)
-
             return
         else:
-            self.send_header('Content-type', "text/plain")
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
             self.end_headers()
             if "files/html" not in myPath:
                 newPath = "files/html" + myPath
             else:
                 newPath = myPath
-            print(newPath)
             file = open(newPath, 'rb')
             self.wfile.write(file.read())
             file.close()
