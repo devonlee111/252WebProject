@@ -2,6 +2,10 @@ var username;
 var password;
 
 function body_onload() {
+	if (sessionStorageGet("LoggedIn", false) === "true") {
+		sessionStorageSet("LoggedIn", false);
+		alert("You have been logged out.");
+	}
 	sessionStorageSet("CurrentUser",  null);
 	signInBtn.onclick = signInBtn_onclick;
 	createAccountBtn.onclick = createAccountBtn_onclick;
@@ -60,7 +64,7 @@ function attemptLogin() {
 			checkResponse(response);
 		}
 	};
-	xmlhttp.open("GET", "SignIn.php?username=" + username + "&password=" + password, true);
+	xmlhttp.open("GET", "signin.php?username=" + username + "&password=" + password, true);
 	xmlhttp.send();
 }
 

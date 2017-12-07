@@ -61,7 +61,7 @@ function checkResponse(response) {
 		alert("Account successfully created.");
 		sessionStorageSet("CurrentUser", username);
 		sessionStorageSet("LoggedIn", true);
-		location.href = "Mainpage.html";
+		location.href = "MainPage.html";
 	}
 	if (response === "false") {
 		alert("Username has already been taken.");

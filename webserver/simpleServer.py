@@ -9,10 +9,10 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         # send response status code
         myPath = self.path
-        print(myPath)
-        self.send_response(200)
+        # self.send_response(200)
         if ( myPath is '/' or myPath is '/MainPage.html' ):
             # send headers
+            self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             # Open the certain page
@@ -26,13 +26,19 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 newPath = "files/html" + myPath
             else:
                 newPath = myPath 
-            self.send_header('Content-type', 'text/html')
-            self.end_headers()
+            #self.send_header('Content-type', 'text/html')
+            #self.end_headers()
             try:
                 file = open(newPath, 'rb')
+                self.send_response(200)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers();
                 self.wfile.write(bytes(file.read()))
                 file.close()
             except IOError:
+                self.send_response(404)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers();
                 file = open("files/html/404.html", 'rb')
                 self.wfile.write(bytes(file.read()))
                 file.close()
@@ -45,6 +51,7 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 tmp = "gif"
             else:
                 tmp = "png"
+            self.send_response(200)
             content = "images/" + tmp
             self.send_header('Content-type', content)
             self.end_headers()
@@ -62,13 +69,14 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             command = "php " + command
             proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
             result = proc.stdout.read()
-
-            self.wfile.write(bytes(result))
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
             self.wfile.write(result)
-
             return
         else:
-            self.send_header('Content-type', "text/plain")
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
             self.end_headers()
             if "files/html" not in myPath:
                 newPath = "files/html" + myPath
