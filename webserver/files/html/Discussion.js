@@ -15,22 +15,25 @@ function body_onload() {
 }
 
 function postReplyBtn_onclick() {
-	if (sessionStorageGet("LoggedIn", false) === "false") {
+	if (sessionStorageGet("LoggedIn", "false") === "false" || currentUser === null) {
 		alert("You Must Be Logged In To Post Replies.");
+		return;
 	}
-	else {
-		var xmlhttp = new XMLHttpRequest();
-		postReplyBtn.onclick = function() {
-			xmlhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					retrieveResponses();
-				}
+	var replyMessage = replyTextarea.value;
+	if (replyMessage === "") {
+		alert("You cannot post an empty response.")
+		return;
+	}
+	var xmlhttp = new XMLHttpRequest();
+	postReplyBtn.onclick = function() {
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status === 200) {
+				retrieveResponses();
 			}
-		};
-		var replyMessage = replyTextarea.value;
-		xmlhttp.open("GET", "postreply.php?topic=" + topic + "&message=" + replyMessage + "&user=" + currentUser, true);
-		xmlhttp.send();
-	}
+		}
+	};
+	xmlhttp.open("GET", "postreply.php?topic=" + topic + "&message=" + replyMessage + "&user=" + currentUser, true);
+	xmlhttp.send();
 }
 
 function retrieveResponses() {
