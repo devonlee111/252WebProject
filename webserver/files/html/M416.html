@@ -2,7 +2,8 @@
 <html>
 
 <head>
-	
+
+<script language="javascript" type="text/javascript" src="Shared.js"></script>	
 <script language="javascript" type="text/javascript" src="Discussion.js"></script>
 
 <style>
@@ -35,12 +36,14 @@
 
 	#postReplyBtn {
 		position: relative;
-		top: 10px;
+		top: 100px;
 		width: 200px;
-		left: 700px;
+		left: 75px;
 		margin: auto;
 		font-size: 15;
 		font-family: 'Open Sans', san-serif;
+		border-style: solid;
+		border-width: 2px;
 	}
 
 	#replyTextarea {
@@ -107,7 +110,7 @@
 <link rel="icon" href="/assets/icons/pan.png">
 </head>
 
-<body background="assets/background.jpg" link="#e8e4e1" vlink="#e8e4e1"> 
+<body onload="body_onload()" background="assets/background.jpg" link="#e8e4e1" vlink="#e8e4e1"> 
 
 	<h1 align="middle" style="fond-family:Verdana">All You Need about PUBG</h1> 
 	<ul>
@@ -158,7 +161,7 @@
 			<div class="discussionThreadContent">Some Content</div>
 			<div class="divnewline"></div>
 			<textarea id="replyTextarea"></textarea>
-			<input class="postReplyBtn" type="button" value="Respond" />
+			<button id="postReplyBtn">Post Reply</button>
 		</div>
 	</div>
 
