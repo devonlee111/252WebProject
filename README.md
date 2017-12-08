@@ -6,5 +6,7 @@ A basic webserver hosting a custom wiki page about PUBG (currently under constru
 Working functionality: 
 
 *Account Creation
+
 *Logging in
+
 *User posting replies to specific pages
