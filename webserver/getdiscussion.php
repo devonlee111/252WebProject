@@ -23,9 +23,9 @@
 	$loops = 0;
 	$return = "";
 	while($row = mysql_fetch_assoc($result)) {
-		if ($loops == 5) {
-			break;
-		}
+		//if ($loops == 5) {
+		//	break;
+		//}
 		
 		$return .= "<p1><strong>" . $row['user'] . "</strong><br>" . $row['message'] . "</p1><br><br>";
 		$loops++;
