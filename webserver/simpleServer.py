@@ -74,8 +74,11 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             myPath = myPath[1:]
             command = (myPath.replace('?', ' ')).replace('&', ' ')
             command = "php " + command
+            print("command is " + command + "\n")
             proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
             result = proc.stdout.read()
+            print(result)
+            print("\n")
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()

@@ -15,6 +15,7 @@
 	
 	$topic = $_GET["topic"];
 	$message = $_GET["message"];
+	$fixedMessage = str_replace('%20', ' ', $message);
 	$user = $_GET["user"];
 	$conn = new mysqli($server, $username, $password, $database);
 
@@ -22,7 +23,7 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sqlinsert = "INSERT INTO discussions (topic, message, date, user) VALUES('" . $topic . "','" .  $message . "',CURDATE(),'" . $user . "')";
+	$sqlinsert = "INSERT INTO discussions (topic, message, date, user) VALUES('" . $topic . "','" .  $fixedMessage . "',CURDATE(),'" . $user . "')";
 	$result = $conn->query($sqlinsert);
 	if ($result = true) {
 		echo "true";
