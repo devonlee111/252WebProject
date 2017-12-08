@@ -25,11 +25,10 @@ function postReplyBtn_onclick() {
 		return;
 	}
 	var xmlhttp = new XMLHttpRequest();
-	postReplyBtn.onclick = function() {
-		xmlhttp.onreadystatechange = function() {
-			if (this.readyState === 4 && this.status === 200) {
-				retrieveResponses();
-			}
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			console.log("reloading responses");
+			retrieveResponses();
 		}
 	};
 	xmlhttp.open("GET", "postreply.php?topic=" + topic + "&message=" + replyMessage + "&user=" + currentUser, true);
