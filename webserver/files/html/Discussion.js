@@ -23,8 +23,7 @@ function postReplyBtn_onclick() {
 		postReplyBtn.onclick = function() {
 			xmlhttp.onreadystatechange = function() {
 				if (this.readyState === 4 && this.status === 200) {
-					var response = this.responseText;
-					location.reload();
+					retrieveResponses();
 				}
 			}
 		};

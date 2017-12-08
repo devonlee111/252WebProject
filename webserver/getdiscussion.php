@@ -18,7 +18,7 @@
 	mysql_connect($server, $username, $password);
 	mysql_select_db($database);
 
-	$sql = "SELECT message, user FROM discussions WHERE topic='" . $topic . "'";
+	$sql = "(SELECT message, user FROM discussions WHERE topic='" . $topic . "') ORDER BY date DESC";
 	$result = mysql_query($sql);
 	$loops = 0;
 	$return = "";
